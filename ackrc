@@ -1,0 +1,5 @@
+--color
+--type-set=groovy=.groovy
+--type-add=jsp=.gsp
+--ignore-dir=ui/target
+--ignore-dir=ui/target-eclipse
