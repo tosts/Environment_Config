@@ -120,10 +120,16 @@ filetype plugin indent on
 " }}}
 " Plugins {{{
 
-    noremap <silent> <F4> :NERDTreeToggle<cr>
+    noremap <silent> <F4> :NERDTreeToggle<return>
     let g:NERDTreeWinSize=70
 
     ca ack Ack
+
+    vnoremap <leader>a, :Tabularize /\v,@<= /r0c0<return>
+    vnoremap <leader>a; :Tabularize /\v,@<= /r0c0<return>
+    vnoremap <leader>a= :Tabularize /\v=<return>
+
+    nnoremap <silent> <F11> :YRShow<CR>
 
 " }}}
 " Advanced Shortcuts {{{
@@ -190,6 +196,12 @@ filetype plugin indent on
 
         noremap <leader>xlx olog.info 'XO'*75<cr>log.info <cr>log.info 'XO'*75<esc>k$a
         nnoremap <leader>sd :set ft=diff<cr>
+
+    " }}}
+    " Tmux interop (tslime fail) {{{
+
+        " should be refined
+        nnoremap <leader>r :call system("tmux send-keys -t work:0.1 C-P Enter")<return>
 
     " }}}
 
