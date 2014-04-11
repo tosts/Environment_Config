@@ -36,6 +36,7 @@ filetype plugin indent on
 
         set nowrap
         syntax on
+        set relativenumber
 
     " }}}
     " Editing {{{
@@ -43,6 +44,8 @@ filetype plugin indent on
         set smartindent autoindent
 
         set backspace=indent,eol,start
+
+        set undofile
 
         " emacs navigation in command mode {{{
 
