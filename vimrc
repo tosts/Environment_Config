@@ -36,7 +36,10 @@ filetype plugin indent on
 
         set nowrap
         syntax on
+
+        set number
         set relativenumber
+        nnoremap <F4> :set invnumber \| set invrelativenumber<return>
 
     " }}}
     " Editing {{{
@@ -44,8 +47,6 @@ filetype plugin indent on
         set smartindent autoindent
 
         set backspace=indent,eol,start
-
-        set undofile
 
         " emacs navigation in command mode {{{
 
@@ -60,6 +61,10 @@ filetype plugin indent on
         " }}}
 
     " }}}
+
+    set undofile
+    set undodir=~/.vimundo
+    set directory=~/.vimswp
 
 " }}}
 " Custom Behavior {{{
@@ -89,12 +94,8 @@ filetype plugin indent on
     " }}}
     " Personal essentials {{{
 
-        " Access vimrc {{{
-
-            nnoremap <silent> <leader>ev :tabnew $MYVIMRC<cr>
-            nnoremap <leader>sv :source $MYVIMRC<cr> :echo 'resourced .vimrc'<cr>
-
-        " }}}
+        nnoremap <silent> <leader>ev :tabnew $MYVIMRC<cr>
+        nnoremap <leader>sv :source $MYVIMRC<cr> :echo 'resourced .vimrc'<cr>
 
         noremap <C-j> <C-w>j
         noremap <C-k> <C-w>k
@@ -125,17 +126,23 @@ filetype plugin indent on
 
     noremap <silent> <F4> :NERDTreeToggle<return>
     let g:NERDTreeWinSize=70
+    nnoremap <leader>n :NERDTreeFind<cr>
 
     ca ack Ack
 
-    vnoremap <leader>a, :Tabularize /\v,@<= /r0c0<return>
+    vnoremap <leader>a, :Tabularize /\v,@<= /l0c0<return>
+    vnoremap <leader>a: :Tabularize /:/l0c1<return>
     vnoremap <leader>a; :Tabularize /\v,@<= /r0c0<return>
-    vnoremap <leader>a= :Tabularize /\v=<return>
+    vnoremap <leader>a= :Tabularize /=<return>
+    " escaped mapping, result keymap: \a|
+    nnoremap <leader>a\| vip:Tabularize /\|<return>
 
     nnoremap <silent> <F11> :YRShow<CR>
 
+    let g:syntastic_enable_perl_checker = 1
+
 " }}}
-" Advanced Shortcuts {{{
+" Advanced Functions {{{
 
     " Highlight trailing whitespace {{{
 
@@ -198,7 +205,7 @@ filetype plugin indent on
     " groovy {{{
 
         noremap <leader>xlx olog.info 'XO'*75<cr>log.info <cr>log.info 'XO'*75<esc>k$a
-        nnoremap <leader>sd :set ft=diff<cr>
+        nnoremap <leader>sfd :set ft=diff<cr> -- conflict with 'Say with Dumper'
 
     " }}}
     " Tmux interop (tslime fail) {{{
