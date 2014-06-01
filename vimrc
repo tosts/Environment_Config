@@ -1,5 +1,32 @@
-execute pathogen#infect()
-filetype plugin indent on
+" Vundle Plugin managment {{{
+
+    set nocompatible
+    filetype off
+
+    set runtimepath+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+
+    " Needs to compile c libs:
+    Plugin 'git://git.wincent.com/command-t.git'
+
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'scrooloose/syntastic'
+
+    Plugin 'tpope/vim-surround'
+    " Plugin 'tpope/vim-fugitive'
+
+    Plugin 'godlygeek/tabular'
+
+    " Plugin 'spf13/vim-autoclose'
+
+    Plugin 'vim-scripts/YankRing.vim'
+    Plugin 'mileszs/ack.vim'
+
+    call vundle#end()
+    filetype plugin indent on
+
+" }}}
 
 " Vim config fixup {{{
 
@@ -99,6 +126,7 @@ filetype plugin indent on
         inoremap jk <esc>
         nnoremap <silent> <leader>q :q!<cr>
         nnoremap <leader>w :w<cr> :echo 'saved'<cr>
+        nnoremap <leader>e :Ex<cr>
         nnoremap <leader>n :tabnew<cr>
         nnoremap <silent> <leader>r :redraw!<cr>
 
