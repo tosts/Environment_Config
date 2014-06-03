@@ -4,6 +4,7 @@
     filetype off
 
     set runtimepath+=~/.vim/bundle/Vundle.vim
+    let path='~/.vim/bundle'
     call vundle#begin()
 
     " Needs to compile c libs:
@@ -92,8 +93,8 @@
     " }}}
 
     set undofile
-    set undodir=~/.vimundo
-    set directory=~/.vimswp
+    set undodir=~/.vim/vimundo
+    set directory=~/.vim/vimswp
 
 " }}}
 " Custom Behavior {{{
