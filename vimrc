@@ -14,6 +14,7 @@
     Plugin 'scrooloose/syntastic'
 
     Plugin 'tpope/vim-surround'
+    Plugin 'tpope/vim-repeat'
     " Plugin 'tpope/vim-fugitive'
 
     Plugin 'godlygeek/tabular'
@@ -137,6 +138,7 @@
         " purge trailing whitespace
         map <F2> :%s/\s\+$//g<cr>
 
+        nnoremap <silent> * :let @/='\<<C-R>=expand("<cword>")<cr>\>'<cr>:set hlsearch<cr>
 
     " }}}
     " Perl {{{
