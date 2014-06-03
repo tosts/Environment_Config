@@ -7,4 +7,4 @@ set columns=125
 
 set guifont=Consolas:h11:cDEFAULT
 
-colorscheme koehler
+colorscheme solarized

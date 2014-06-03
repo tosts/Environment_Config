@@ -7,24 +7,34 @@
     let path='~/.vim/bundle'
     call vundle#begin()
 
-    " Needs to compile c libs:
-    Plugin 'git://git.wincent.com/command-t.git'
+        " Needs to compile c libs:
+        Plugin 'git://git.wincent.com/command-t.git'
 
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'scrooloose/nerdcommenter'
-    Plugin 'scrooloose/syntastic'
+        Plugin 'scrooloose/nerdtree'
+        Plugin 'scrooloose/nerdcommenter'
+        Plugin 'scrooloose/syntastic'
 
-    Plugin 'tpope/vim-surround'
-    Plugin 'tpope/vim-repeat'
-    " Plugin 'tpope/vim-fugitive'
+        Plugin 'tpope/vim-surround'
+        Plugin 'tpope/vim-repeat'
+        " Plugin 'tpope/vim-fugitive'
 
-    Plugin 'godlygeek/tabular'
+        Plugin 'godlygeek/tabular'
 
-    " Plugin 'spf13/vim-autoclose'
+        " Plugin 'spf13/vim-autoclose'
 
-    Plugin 'vim-scripts/YankRing.vim'
-    Plugin 'vim-scripts/loremipsum'
-    Plugin 'mileszs/ack.vim'
+        Plugin 'vim-scripts/YankRing.vim'
+        Plugin 'vim-scripts/loremipsum'
+        Plugin 'mileszs/ack.vim'
+
+        " colorschemes
+        Plugin 'altercation/vim-colors-solarized'
+        Plugin 'tpope/vim-vividchalk'
+        Plugin 'nanotech/jellybeans.vim'
+        Plugin 'Lokaltog/vim-distinguished'
+        " not working: Plugin 'garybernhardt/dotfiles', {'rtp': '\.vim/color'}
+        " using this instead
+        Plugin 'mindriot101/srw-colorscheme.vim'
+        Plugin 'vim-scripts/wombat256.vim'
 
     call vundle#end()
     filetype plugin indent on
