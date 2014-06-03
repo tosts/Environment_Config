@@ -22,6 +22,7 @@
     " Plugin 'spf13/vim-autoclose'
 
     Plugin 'vim-scripts/YankRing.vim'
+    Plugin 'vim-scripts/loremipsum'
     Plugin 'mileszs/ack.vim'
 
     call vundle#end()
