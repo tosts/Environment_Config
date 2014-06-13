@@ -23,8 +23,12 @@
         " Plugin 'spf13/vim-autoclose'
 
         Plugin 'vim-scripts/YankRing.vim'
+        "Plugin 'mileszs/ack.vim'
+        Plugin 'rking/ag.vim'
+
+        " Fun
         Plugin 'vim-scripts/loremipsum'
-        Plugin 'mileszs/ack.vim'
+        " Plugin 'bling/vim-airline'
 
         " colorschemes
         Plugin 'altercation/vim-colors-solarized'
@@ -79,6 +83,7 @@
 
         set number
         set relativenumber
+        set ruler
         nnoremap <F4> :set invnumber \| set invrelativenumber<return>
 
     " }}}
@@ -120,6 +125,26 @@
 
         nnoremap <silent><Space> :silent nohlsearch<Bar>echo<return>
 
+    " }}}
+    " Personal essentials {{{
+
+        " convenient tab switching
+        nnoremap <C-H> gT
+        nnoremap <C-L> gt
+
+        nnoremap <silent> <leader>ev :tabnew $MYVIMRC<cr>
+        nnoremap <leader>sv :source $MYVIMRC<cr> :echo 'resourced .vimrc'<cr>
+
+        inoremap jk <esc>
+        nnoremap <silent> <leader>q :q!<cr>
+        nnoremap <leader>w :w<cr> :echo 'saved'<cr>
+        nnoremap <leader>e :Ex<cr>
+        "nnoremap <leader>n :tabnew<cr>
+        "nnoremap <silent> <leader>r :redraw!<cr>
+
+    " }}}
+    " Personal preference {{{
+
         " match 'very' magic by default
         vnoremap / /\v
         nnoremap / /\v
@@ -127,25 +152,8 @@
         nnoremap <tab> %
         vnoremap <tab> %
 
-        " convenient tag switching
-        nnoremap <C-H> gT
-        nnoremap <C-L> gt
-
-    " }}}
-    " Personal essentials {{{
-
-        nnoremap <silent> <leader>ev :tabnew $MYVIMRC<cr>
-        nnoremap <leader>sv :source $MYVIMRC<cr> :echo 'resourced .vimrc'<cr>
-
         noremap <C-j> <C-w>j
         noremap <C-k> <C-w>k
-
-        inoremap jk <esc>
-        nnoremap <silent> <leader>q :q!<cr>
-        nnoremap <leader>w :w<cr> :echo 'saved'<cr>
-        nnoremap <leader>e :Ex<cr>
-        nnoremap <leader>n :tabnew<cr>
-        nnoremap <silent> <leader>r :redraw!<cr>
 
         " purge trailing whitespace
         map <F2> :%s/\s\+$//g<cr>
@@ -171,6 +179,7 @@
     nnoremap <leader>n :NERDTreeFind<cr>
 
     ca ack Ack
+    ca ag Ag
 
     vnoremap <leader>a, :Tabularize /\v,@<= /l0c0<return>
     vnoremap <leader>a: :Tabularize /:/l0c1<return>
