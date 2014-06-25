@@ -6,6 +6,7 @@
     set runtimepath+=~/.vim/bundle/Vundle.vim
     let path='~/.vim/bundle'
     call vundle#begin()
+        Plugin 'gmarik/Vundle.vim'
 
         " Needs to compile c libs:
         Plugin 'git://git.wincent.com/command-t.git'
@@ -35,10 +36,12 @@
         Plugin 'tpope/vim-vividchalk'
         Plugin 'nanotech/jellybeans.vim'
         Plugin 'Lokaltog/vim-distinguished'
-        " not working: Plugin 'garybernhardt/dotfiles', {'rtp': '\.vim/color'}
-        " using this instead
+        Plugin 'garybernhardt/dotfiles', {'rtp': '.vim/color'}
         Plugin 'mindriot101/srw-colorscheme.vim'
+        " not working either
         Plugin 'vim-scripts/wombat256.vim'
+        Plugin 'gmarik/ingretu'
+        Plugin 'desert-warm-256'
 
     call vundle#end()
     filetype plugin indent on
@@ -49,7 +52,6 @@
 
     set nocompatible
     set modelines=0
-    set pastetoggle=<F3>
 
     " Folding {{{
 
@@ -84,14 +86,22 @@
         set number
         set relativenumber
         set ruler
-        nnoremap <F4> :set invnumber \| set invrelativenumber<return>
+        set cursorline
+        nnoremap <F2> :set invnumber \| set invrelativenumber<return>
+
+        set background=dark
 
     " }}}
-    " Editing {{{
+    " Editing/Behavior {{{
 
         set smartindent autoindent
 
         set backspace=indent,eol,start
+
+        set undofile
+        set undodir=~/.vim/vimundo
+        set directory=~/.vim/vimswp
+        set autoread
 
         " emacs navigation in command mode {{{
 
@@ -105,11 +115,7 @@
 
         " }}}
 
-    " }}}
-
-    set undofile
-    set undodir=~/.vim/vimundo
-    set directory=~/.vim/vimswp
+    "}}}
 
 " }}}
 " Custom Behavior {{{
@@ -155,8 +161,9 @@
         noremap <C-j> <C-w>j
         noremap <C-k> <C-w>k
 
+        set pastetoggle=<F3>
         " purge trailing whitespace
-        map <F2> :%s/\s\+$//g<cr>
+        map <leader>dw :%s/\s\+$//g<cr>
 
         nnoremap <silent> * :let @/='\<<C-R>=expand("<cword>")<cr>\>'<cr>:set hlsearch<cr>
 
@@ -186,7 +193,7 @@
     vnoremap <leader>a; :Tabularize /\v,@<= /r0c0<return>
     vnoremap <leader>a= :Tabularize /=<return>
     " escaped mapping, result keymap: \a|
-    nnoremap <leader>a\| vip:Tabularize /\|<return>
+    nnoremap <leader>a\| vip:Tabularize /\|\{1,2}<return>
 
     nnoremap <silent> <F11> :YRShow<CR>
 
@@ -268,8 +275,6 @@
 
 " }}}
 " Unorganized Remainder {{{
-
-" set backupdir=~/.vim/backup " is this even working? probably not doing what i was thinking it would do.
 
 " mapping rampage
 
