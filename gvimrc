@@ -1,11 +1,11 @@
 set guioptions-=m
-set guioptions-=T
 set guioptions-=r
+set guioptions-=T
 
-set lines=40
+set lines=55
 set columns=125
 
-set guifont=Monospace:h8:cDEFAULT
+set guifont=Oxygen\ Mono\ 12,\ Ubuntu\ Mono\ 12
 
 set bg=dark
-colorscheme solarized
+colorscheme wombat256mod
