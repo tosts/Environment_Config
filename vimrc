@@ -17,8 +17,9 @@
 
         Plugin 'tpope/vim-surround'
         Plugin 'tpope/vim-repeat'
-        " Plugin 'tpope/vim-fugitive'
+        Plugin 'tpope/vim-fugitive'
 
+        Plugin 'AndrewRadev/linediff.vim'
         Plugin 'godlygeek/tabular'
 
         " Plugin 'spf13/vim-autoclose'
@@ -36,7 +37,7 @@
         Plugin 'tpope/vim-vividchalk'
         Plugin 'nanotech/jellybeans.vim'
         Plugin 'Lokaltog/vim-distinguished'
-        Plugin 'garybernhardt/dotfiles', {'rtp': '.vim/color'}
+        Plugin 'garybernhardt/dotfiles', {'rtp': '.vim'}
         Plugin 'mindriot101/srw-colorscheme.vim'
         " not working either
         Plugin 'vim-scripts/wombat256.vim'
@@ -89,6 +90,7 @@
         set cursorline
         nnoremap <F2> :set invnumber \| set invrelativenumber<return>
 
+        colorscheme wombat256mod
         set background=dark
 
     " }}}
@@ -195,9 +197,17 @@
     " escaped mapping, result keymap: \a|
     nnoremap <leader>a\| vip:Tabularize /\|\{1,2}<return>
 
-    nnoremap <silent> <F11> :YRShow<CR>
+    nnoremap <silent> <F11> :YRShow<return>
 
-    let g:syntastic_enable_perl_checker = 1
+    vnoremap <leader>ld :Linediff<return>
+    nnoremap <leader>lr :LinediffReset<return>
+
+    nnoremap <leader>gs :Gstatus<return>
+    nnoremap <leader>gl :Git log<return>
+    nnoremap <leader>gsr :Git svn rebase<return>
+    nnoremap <leader>gsd :Git svn dcommit<return>
+
+    let g:syntastic_enable_perl_checker=1
 
 " }}}
 " Advanced Functions {{{
