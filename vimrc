@@ -183,6 +183,10 @@
 " }}}
 " Plugins {{{
 
+    let g:CommandTFileScanner='find'
+    let g:CommandTScanDotDirectories=1
+    let g:CommandTAlwaysShowDotFiles=1
+
     noremap <silent> <F4> :NERDTreeToggle<return>
     let g:NERDTreeWinSize=70
     nnoremap <leader>n :NERDTreeFind<cr>
