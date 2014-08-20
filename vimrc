@@ -28,6 +28,7 @@
         "Plugin 'mileszs/ack.vim'
         Plugin 'rking/ag.vim'
 
+        Plugin 'mattn/emmet-vim'
         " Fun
         Plugin 'vim-scripts/loremipsum'
         " Plugin 'bling/vim-airline'
@@ -104,6 +105,8 @@
         set undodir=~/.vim/vimundo
         set directory=~/.vim/vimswp
         set autoread
+
+        set enc=utf-8
 
         " emacs navigation in command mode {{{
 
