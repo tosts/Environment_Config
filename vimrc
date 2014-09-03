@@ -148,7 +148,7 @@
 
         inoremap jk <esc>
         nnoremap <silent> <leader>q :q!<cr>
-        nnoremap <leader>w :w<cr> :echo 'saved'<cr>
+        nnoremap <leader>w :w<cr>:echo 'saved'<cr>
         nnoremap <leader>e :Ex<cr>
         "nnoremap <leader>n :tabnew<cr>
         "nnoremap <silent> <leader>r :redraw!<cr>
