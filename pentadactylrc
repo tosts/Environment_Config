@@ -2,7 +2,7 @@
 
 loadplugins '\.(js|penta)$'
 group user
-map -count -modes=c,i,v jk -builtin <Esc>
+map -count -modes=c,i,t,v jk -builtin <Esc>
 map -count -modes=n <C-h> -builtin gT
 map -count -modes=n <C-l> -builtin gt
 map -count -modes=n gt -builtin gn

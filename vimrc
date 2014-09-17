@@ -20,7 +20,10 @@
         Plugin 'tpope/vim-fugitive'
 
         Plugin 'AndrewRadev/linediff.vim'
+        Plugin 'vim-scripts/ingo-library'
+        Plugin 'vim-scripts/AdvancedDiffOptions'
         Plugin 'godlygeek/tabular'
+
 
         " Plugin 'spf13/vim-autoclose'
 
