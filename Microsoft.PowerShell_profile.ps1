@@ -17,4 +17,3 @@ New-Alias which Get-Command
 Set-Alias mvn mvn.bat
 Set-Alias android android.bat
 Set-Alias ll Get-ChildItem
-Set-Alias sudo "Start-Process powershell -Verb runAs"
