@@ -11,9 +11,10 @@ Set-PSReadlineKeyHandler -Key Ctrl+K -Function ForwardDeleteLine
 Set-PSReadlineKeyHandler -Key Alt+F -Function ForwardWord
 Set-PSReadlineKeyHandler -Key Alt+B -Function BackwardWord
 
-New-Alias groovy groovy.bat
+Set-Alias make gmake.exe
+Set-Alias groovy groovy.bat
 Set-Alias gsh groovysh.bat
-New-Alias which Get-Command
+Set-Alias which Get-Command
 Set-Alias mvn mvn.bat
 Set-Alias android android.bat
 Set-Alias ll Get-ChildItem
