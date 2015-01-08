@@ -1,0 +1,11 @@
+
+noremap jk <esc>
+inoremap jk <esc>
+
+noremap <C-h> gT
+noremap <C-l> gt
+
+noremap j 8j
+noremap k 8k
+
+" see also ~/.vimperator/plugin/caret-mode-mapping.js
