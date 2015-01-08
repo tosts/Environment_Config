@@ -8,8 +8,7 @@
     call vundle#begin()
         Plugin 'gmarik/Vundle.vim'
 
-        " Needs to compile c libs:
-        Plugin 'git://git.wincent.com/command-t.git'
+        Plugin 'kien/ctrlp.vim'
 
         Plugin 'scrooloose/nerdtree'
         Plugin 'scrooloose/nerdcommenter'
@@ -192,9 +191,7 @@
 " }}}
 " Plugins {{{
 
-    let g:CommandTFileScanner='find'
-    let g:CommandTScanDotDirectories=1
-    let g:CommandTAlwaysShowDotFiles=1
+    nnoremap <leader>t :CtrlP<return>
 
     let g:NERDTreeWinSize=70
     nnoremap <leader>n :NERDTreeFind<return>
@@ -296,12 +293,6 @@
     " }}}
 
 " }}}
-" Unorganized Remainder {{{
 
-" mapping rampage
-
-":highlight Tabs ctermbg=darkred guibg=darkred
-"match Tabs /\t\+/
-"au BufWinEnter * match Tabs /\t\+/
-
-" }}}
+set background=dark
+colorscheme default
