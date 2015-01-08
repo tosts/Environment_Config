@@ -146,15 +146,15 @@
         nnoremap <C-H> gT
         nnoremap <C-L> gt
 
-        nnoremap <silent> <leader>ev :tabnew $MYVIMRC<cr>
-        nnoremap <leader>sv :source $MYVIMRC<cr> :echo 'resourced .vimrc'<cr>
+        nnoremap <silent> <leader>ev :tabnew $MYVIMRC<return>
+        nnoremap <leader>sv :source $MYVIMRC<return> :echo 'resourced .vimrc'<return>
 
         inoremap jk <esc>
-        nnoremap <silent> <leader>q :q!<cr>
-        nnoremap <leader>w :w<cr>:echo 'saved'<cr>
-        nnoremap <leader>e :Ex<cr>
-        "nnoremap <leader>n :tabnew<cr>
-        "nnoremap <silent> <leader>r :redraw!<cr>
+        nnoremap <silent> <leader>q :q!<return>
+        nnoremap <leader>w :w<return>:echo 'saved'<return>
+        nnoremap <leader>e :Ex<return>
+        "nnoremap <leader>n :tabnew<return> -> plugins
+        "nnoremap <silent> <leader>r :redraw!<return>
 
     " }}}
     " Personal preference {{{
@@ -175,6 +175,9 @@
 
         nnoremap <silent> * :let @/='\<<C-R>=expand("<cword>")<cr>\>'<cr>:set hlsearch<cr>
 
+        " missing privilege override
+        cmap w!! w !sudo tee > /dev/null %
+
     " }}}
     " Perl {{{
 
@@ -193,9 +196,8 @@
     let g:CommandTScanDotDirectories=1
     let g:CommandTAlwaysShowDotFiles=1
 
-    noremap <silent> <F4> :NERDTreeToggle<return>
     let g:NERDTreeWinSize=70
-    nnoremap <leader>n :NERDTreeFind<cr>
+    nnoremap <leader>n :NERDTreeFind<return>
 
     ca ack Ack
     ca ag Ag
