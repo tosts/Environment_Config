@@ -94,7 +94,7 @@
         set cursorline
         nnoremap <F2> :set invnumber \| set invrelativenumber<return>
 
-        colorscheme wombat256mod
+        "colorscheme wombat256mod
         set background=dark
 
     " }}}
