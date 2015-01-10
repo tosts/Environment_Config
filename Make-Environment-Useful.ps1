@@ -1,3 +1,5 @@
+$VerbosePreference = "Continue"
+
 $expected_mingw_path = "C:\MinGW64"
 $install_mingw = -Not (Test-Path "$expected_mingw_path\bin\g++.exe")
 
@@ -75,5 +77,5 @@ if ($install_node) {
     Write-Verbose "Finished"
 }
 
-Write-Verbose -NoNewLine "Press any key to continue..."
+Write-Verbose "Press any key to continue..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
