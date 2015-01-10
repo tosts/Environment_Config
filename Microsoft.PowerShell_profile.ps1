@@ -24,4 +24,15 @@ Set-Alias ll Get-ChildItem
 Set-Alias js node.exe
 Set-Alias node node.exe
 Set-Alias npm npm.cmd
-Set-Alias mocha mocha.cmd
+
+
+$OrigBgColor = $host.ui.rawui.BackgroundColor
+$OrigFgColor = $host.ui.rawui.ForegroundColor
+function Reset-Colors {
+    $host.ui.rawui.BackgroundColor = $OrigBgColor
+    $host.ui.rawui.ForegroundColor = $OrigFgColor
+}
+Function mocha {
+    mocha.cmd
+    Reset-Colors
+}
