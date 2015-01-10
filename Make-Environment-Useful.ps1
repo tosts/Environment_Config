@@ -1,4 +1,8 @@
-$install_mingw = $false;
+$expected_mingw_path = "C:\MinGW64"
+$install_mingw = -Not (Test-Path "$expected_mingw_path\bin\g++.exe")
+
+$expected_node_path = "C:\Program Files\nodejs"
+$install_node = -Not (Test-Path "$expected_node_path\node.exe")
 
 # For user _and_ admin
 
@@ -29,16 +33,35 @@ if ($myWindowsPrincipal.IsInRole($adminRole)) {
 
 if ($install_mingw) {
     Write-Host "Fetching for installation: mingw installer"
-    Write-Host "Hint: Suggested path C:\MinGW64"
-        Invoke-Webrequest http://win-builds.org/1.5-rc3/win-builds-1.5-rc3.exe -OutFile mingw_installer.exe
-        $rc = (Start-Process "mingw_installer.exe" -Wait).ExitCode
-        Remove-Item mingw_installer.exe
-    Write-Host "Finished with exit code '$rc'"
+    Write-Host "Hint: Expected path '$expected_mingw_path'"
+        Invoke-Webrequest 'http://win-builds.org/1.5-rc3/win-builds-1.5-rc3.exe' -OutFile mingw_installer.exe
+        Start-Process 'mingw_installer.exe' -Wait
+        Remove-Item 'mingw_installer.exe'
 
-    if (Test-Path 'C:\MinGW64\bin') {
-        Write-Host "Adding to system PATH: 'C:\MinGW64\bin'"
-        [Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\MinGW64\bin", [EnvironmentVariableTarget]::Machine)
-    }
+        if (Test-Path "$expected_mingw_path\bin") {
+            Write-Host "Adding to system PATH: '$expected_mingw_path\bin'"
+            [Environment]::SetEnvironmentVariable("Path", "$env:Path;$expected_mingw_path\bin", [EnvironmentVariableTarget]::Machine)
+        }
+    Write-Host "Finished"
+}
+
+if ($install_node) {
+    Write-Host "Fetching for installation: node installer"
+        $node_latest_downloads = 'http://nodejs.org/dist/latest/x64/'
+        $msi_file_name = ((Invoke-Webrequest $node_latest_downloads).Content `
+                -split ' *<.*?> *', 0, "RegexMatch" |                        `
+                Select-String -Pattern '^node-.*.msi$'                       `
+            ).Line
+        Invoke-Webrequest $node_latest_downloads$msi_file_name -OutFile node_installer.msi
+        Start-Process 'msiexec.exe' -ArgumentList '/i', 'node_installer.msi', '/passive' -Wait
+        Remove-Item 'node_installer.msi'
+
+        if ((Test-Path "$expected_node_path\node.exe") -And (Test-Path "$expected_node_path\nodevars.bat")) {
+            Start-Process "$expected_node_path\nodevars.bat" -Wait
+            Write-Host "Adding to system PATH: '$expected_node_path'"
+            [Environment]::SetEnvironmentVariable("Path", "$env:Path;$expected_node_path", [EnvironmentVariableTarget]::Machine)
+        }
+    Write-Host "Finished"
 }
 
 Write-Host -NoNewLine "Press any key to continue..."
