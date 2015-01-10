@@ -16,6 +16,14 @@ if (Test-Path "$PSScriptRoot\Microsoft.PowerShell_profile.ps1") {
     Copy-Item "$PSScriptRoot\Microsoft.PowerShell_profile.ps1" "$env:USERPROFILE\Documents\WindowsPowerShell"
 }
 
+if (-Not ($env:PATH -Split ';' | `
+        Select-String ([Regex]::Escape("$env:USERPROFILE\AppData\Roaming\npm"))
+   )) {
+    [Environment]::SetEnvironmentVariable("Path",         `
+        "$env:Path;$env:USERPROFILE\AppData\Roaming\npm", `
+        [EnvironmentVariableTarget]::User)
+}
+
 # Elevate & Restart
 #
 # Source: http://blogs.msdn.com/b/virtual_pc_guy/archive/2010/09/23/a-self-elevating-powershell-script.aspx
@@ -58,10 +66,11 @@ if ($install_node) {
         Start-Process 'msiexec.exe' -ArgumentList '/i', 'node_installer.msi', '/passive' -Wait
         Remove-Item 'node_installer.msi'
 
-        if ((Test-Path "$expected_node_path\node.exe") -And (Test-Path "$expected_node_path\nodevars.bat")) {
-            Start-Process "$expected_node_path\nodevars.bat" -Wait
+        if (Test-Path "$expected_node_path\node.exe") {
             Write-Host "Adding to system PATH: '$expected_node_path'"
-            [Environment]::SetEnvironmentVariable("Path", "$env:Path;$expected_node_path", [EnvironmentVariableTarget]::Machine)
+            [Environment]::SetEnvironmentVariable("Path", `
+                "$env:Path;$expected_node_path",          `
+                [EnvironmentVariableTarget]::Machine)
         }
     Write-Host "Finished"
 }

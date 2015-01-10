@@ -24,3 +24,4 @@ Set-Alias ll Get-ChildItem
 Set-Alias js node.exe
 Set-Alias node node.exe
 Set-Alias npm npm.cmd
+Set-Alias mocha mocha.cmd
