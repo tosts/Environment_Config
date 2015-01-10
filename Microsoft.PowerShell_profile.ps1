@@ -1,4 +1,4 @@
-(Import-Module PSReadLine
+Import-Module PSReadLine
 Set-PSReadlineKeyHandler -Key Ctrl+P -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key Ctrl+N -Function HistorySearchForward
 Set-PSReadlineKeyHandler -Key Ctrl+B -Function BackwardChar
