@@ -33,6 +33,7 @@ function Reset-Colors {
     $host.ui.rawui.ForegroundColor = $OrigFgColor
 }
 Function mocha {
-    mocha.cmd
+    param ($args)
+    mocha.cmd $args
     Reset-Colors
 }
