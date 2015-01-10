@@ -13,6 +13,7 @@
         Plugin 'scrooloose/nerdtree'
         Plugin 'scrooloose/nerdcommenter'
         Plugin 'scrooloose/syntastic'
+        Plugin 'PProvost/vim-ps1'
 
         Plugin 'tpope/vim-surround'
         Plugin 'tpope/vim-repeat'
