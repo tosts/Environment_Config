@@ -6,12 +6,14 @@ $install_node = -Not (Test-Path "$expected_node_path\node.exe")
 
 # For user _and_ admin
 
-(New-Object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | Invoke-Expression
-Install-Module PSReadline
+if (-Not (Get-Module PSReadLine)) {
+    (New-Object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | Invoke-Expression
+    Install-Module PSReadLine
+}
 
-if (Test-Path 'Microsoft.PowerShell_profile.ps1') {
+if (Test-Path "$PSScriptRoot\Microsoft.PowerShell_profile.ps1") {
     Write-Host "Updating PowerShell profile."
-    Copy-Item 'Microsoft.PowerShell_profile.ps1' "$env:HOMEDRIVE$env:HOMEPATH\Documents\WindowsPowerShell"
+    Copy-Item "$PSScriptRoot\Microsoft.PowerShell_profile.ps1" "$env:USERPROFILE\Documents\WindowsPowerShell"
 }
 
 # Elevate & Restart
