@@ -12,7 +12,7 @@ if (-Not (Get-Module PSReadLine)) {
 }
 
 if (Test-Path "$PSScriptRoot\Microsoft.PowerShell_profile.ps1") {
-    Write-Host "Updating PowerShell profile."
+    Write-Verbose "Updating PowerShell profile."
     Copy-Item "$PSScriptRoot\Microsoft.PowerShell_profile.ps1" "$env:USERPROFILE\Documents\WindowsPowerShell"
 }
 
@@ -42,24 +42,24 @@ if ($myWindowsPrincipal.IsInRole($adminRole)) {
 }
 
 if ($install_mingw) {
-    Write-Host "Fetching for installation: mingw installer"
-    Write-Host "Hint: Expected path '$expected_mingw_path'"
+    Write-Verbose "Fetching for installation: mingw installer"
+    Write-Verbose "Hint: Expected path '$expected_mingw_path'"
         Invoke-Webrequest 'http://win-builds.org/1.5-rc3/win-builds-1.5-rc3.exe' -OutFile mingw_installer.exe
         Start-Process 'mingw_installer.exe' -Wait
         Remove-Item 'mingw_installer.exe'
 
         if (Test-Path "$expected_mingw_path\bin") {
-            Write-Host "Adding to system PATH: '$expected_mingw_path\bin'"
+            Write-Verbose "Adding to system PATH: '$expected_mingw_path\bin'"
             [Environment]::SetEnvironmentVariable("Path", "$env:Path;$expected_mingw_path\bin", [EnvironmentVariableTarget]::Machine)
         }
-    Write-Host "Finished"
+    Write-Verbose "Finished"
 }
 
 if ($install_node) {
-    Write-Host "Fetching for installation: node installer"
+    Write-Verbose "Fetching for installation: node installer"
         $node_latest_downloads = 'http://nodejs.org/dist/latest/x64/'
         $msi_file_name = ((Invoke-Webrequest $node_latest_downloads).Content `
-                -split ' *<.*?> *', 0, "RegexMatch" |                        `
+                -Split ' *<.*?> *', 0, "RegexMatch" |                        `
                 Select-String -Pattern '^node-.*.msi$'                       `
             ).Line
         Invoke-Webrequest $node_latest_downloads$msi_file_name -OutFile node_installer.msi
@@ -67,13 +67,13 @@ if ($install_node) {
         Remove-Item 'node_installer.msi'
 
         if (Test-Path "$expected_node_path\node.exe") {
-            Write-Host "Adding to system PATH: '$expected_node_path'"
+            Write-Verbose "Adding to system PATH: '$expected_node_path'"
             [Environment]::SetEnvironmentVariable("Path", `
                 "$env:Path;$expected_node_path",          `
                 [EnvironmentVariableTarget]::Machine)
         }
-    Write-Host "Finished"
+    Write-Verbose "Finished"
 }
 
-Write-Host -NoNewLine "Press any key to continue..."
+Write-Verbose -NoNewLine "Press any key to continue..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
