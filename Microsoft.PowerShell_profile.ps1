@@ -21,3 +21,6 @@ Set-Alias which Get-Command
 Set-Alias mvn mvn.bat
 Set-Alias android android.bat
 Set-Alias ll Get-ChildItem
+Set-Alias js node.exe
+Set-Alias node node.exe
+Set-Alias npm npm.cmd
