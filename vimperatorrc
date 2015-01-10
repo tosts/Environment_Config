@@ -1,3 +1,4 @@
+set toolbars+=nonavigation
 
 inoremap jk <esc>
 vnoremap jk <esc>
