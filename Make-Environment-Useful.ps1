@@ -13,6 +13,12 @@ if (-Not (Get-Module PSReadLine)) {
     Install-Module PSReadLine
 }
 
+if (-Not (Get-Module PSake) {
+    New-Item -type directory "$env:USERPROFILE\Documents\WindowsPowerShell\modules\PSake"
+    (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/psake/psake/master/psake.psm1") | `
+        New-Item -Type file "$env:USERPROFILE\Documents\WindowsPowerShell\modules\PSake\PSake.psm1"
+}
+
 if (Test-Path "$PSScriptRoot\Microsoft.PowerShell_profile.ps1") {
     Write-Verbose "Updating PowerShell profile."
     Copy-Item "$PSScriptRoot\Microsoft.PowerShell_profile.ps1" "$env:USERPROFILE\Documents\WindowsPowerShell"
@@ -52,7 +58,8 @@ if ($install_mingw) {
 
         if (Test-Path "$expected_mingw_path\bin") {
             Write-Verbose "Adding to system PATH: '$expected_mingw_path\bin'"
-            [Environment]::SetEnvironmentVariable("Path", "$env:Path;$expected_mingw_path\bin", [EnvironmentVariableTarget]::Machine)
+            [Environment]::SetEnvironmentVariable("Path", "$env:Path;$expected_mingw_path\bin",`
+                [EnvironmentVariableTarget]::Machine)
         }
     Write-Verbose "Finished"
 }

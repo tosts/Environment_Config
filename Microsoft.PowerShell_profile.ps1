@@ -1,4 +1,5 @@
 Import-Module PSReadLine
+Import-Module PSake
 Set-PSReadlineKeyHandler -Key Ctrl+P -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key Ctrl+N -Function HistorySearchForward
 Set-PSReadlineKeyHandler -Key Ctrl+B -Function BackwardChar
@@ -14,6 +15,9 @@ Set-PSReadlineKeyHandler -Key Alt+B -Function BackwardWord
 Set-PSReadlineKeyHandler -Key Alt+D -Function KillWord
 Set-PSReadlineKeyHandler -Key Alt+Backspace -Function BackwardKillWord
 
+Set-Alias psake Invoke-PSake
+Remove-Item alias:\ps
+Set-Alias ps Invoke-PSake
 Set-Alias make gmake.exe
 Set-Alias groovy groovy.bat
 Set-Alias gsh groovysh.bat
