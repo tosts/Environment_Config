@@ -2,11 +2,14 @@ set toolbars+=nonavigation
 
 inoremap jk <esc>
 vnoremap jk <esc>
+cnoremap jk <esc>
 
 noremap <C-h> gT
 noremap <C-l> gt
 
 nnoremap j 8j
 nnoremap k 8k
+nnoremap h 2j
+nnoremap l 2k
 
 " see also ~/.vimperator/plugin/caret-mode-mapping.js
