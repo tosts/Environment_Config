@@ -12,4 +12,4 @@ nnoremap k 8k
 nnoremap h 2j
 nnoremap l 2k
 
-" see also ~/.vimperator/plugin/caret-mode-mapping.js
+" see also ~/vimperator/plugin/caret-mode-mapping.js
