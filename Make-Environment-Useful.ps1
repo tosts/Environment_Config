@@ -13,7 +13,7 @@ if (-Not (Get-Module PSReadLine)) {
     Install-Module PSReadLine
 }
 
-if (-Not (Get-Module PSake) {
+if (-Not (Get-Module PSake)) {
     New-Item -type directory "$env:USERPROFILE\Documents\WindowsPowerShell\modules\PSake"
     (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/psake/psake/master/psake.psm1") | `
         New-Item -Type file "$env:USERPROFILE\Documents\WindowsPowerShell\modules\PSake\PSake.psm1"

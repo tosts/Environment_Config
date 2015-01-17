@@ -27,7 +27,9 @@ Set-Alias android android.bat
 Set-Alias ll Get-ChildItem
 Set-Alias js node.exe
 Set-Alias node node.exe
-Set-Alias npm npm.cmd
+Set-Alias gti git
+Set-Alias jshint jshint.cmd
+Set-Alias jsxhint jshint.cmd
 
 
 $OrigBgColor = $host.ui.rawui.BackgroundColor
@@ -37,7 +39,10 @@ function Reset-Colors {
     $host.ui.rawui.ForegroundColor = $OrigFgColor
 }
 Function mocha {
-    param ($args)
     mocha.cmd $args
+    Reset-Colors
+}
+Function npm {
+    npm.cmd $args
     Reset-Colors
 }

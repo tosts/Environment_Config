@@ -148,6 +148,9 @@
 
         nnoremap <silent> <leader>ev :tabnew $MYVIMRC<return>
         nnoremap <leader>sv :source $MYVIMRC<return> :echo 'resourced .vimrc'<return>
+        if has('win32')
+            nnoremap <silent> <leader>ep :tabnew $HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1<return>
+        endif
 
         inoremap jk <esc>
         nnoremap <silent> <leader>q :q!<return>
