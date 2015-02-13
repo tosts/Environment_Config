@@ -1,0 +1,15 @@
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+set ignorecase smartcase
+set incsearch showmatch hlsearch
+
+set smartindent autoindent
+
+nnoremap <C-H> gT
+nnoremap <C-L> gt
+
+nnoremap <Space> :nohlsearch<return>
