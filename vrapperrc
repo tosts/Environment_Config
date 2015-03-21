@@ -13,3 +13,10 @@ nnoremap <C-H> gT
 nnoremap <C-L> gt
 
 nnoremap <Space> :nohlsearch<return>
+
+inoremap jk <esc>
+
+nnoremap <tab> %
+
+nnoremap \q :q<return>
+nnoremap \w :w<return>
