@@ -46,3 +46,22 @@ Function npm {
     npm.cmd $args
     Reset-Colors
 }
+Function g {
+    grunt $args
+    Reset-Colors
+}
+Function c {
+    cake.cmd $args
+    Reset-Colors
+}
+
+function Expand-ZipFile
+{
+    param ($File, $Destination)
+    $shell = new-object -com shell.application
+    $zip = $shell.Namespace($File)
+    foreach($item in $zip.items())
+    {
+        $shell.Namespace($Destination).copyhere($item)
+    }
+}
