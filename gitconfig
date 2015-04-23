@@ -1,0 +1,26 @@
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    up = pull --rebase
+    lp = log -p -U9
+    lpr = log -p -U9 --reverse
+    au = add -u
+    ca = commit --amend
+    diffs = diff --staged
+    lr = log --raw
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[user]
+    name = xxx
+    email = x@y.z
+[color]
+    ui = true
+    diff = true
+    interactive = true
+    status = true
+    branch = true
+[push]
+    default = tracking
+[core]
+    autocrlf = false
+    safecrlf = false
