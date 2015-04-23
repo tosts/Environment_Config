@@ -14,6 +14,7 @@
         Plugin 'scrooloose/nerdcommenter'
         Plugin 'scrooloose/syntastic'
         Plugin 'PProvost/vim-ps1'
+        Plugin 'kchmck/vim-coffee-script'
 
         Plugin 'tpope/vim-surround'
         Plugin 'tpope/vim-repeat'
@@ -221,6 +222,22 @@
     nnoremap <leader>gsd :Git svn dcommit<return>
 
     let g:syntastic_enable_perl_checker=1
+
+    augroup coffee_script_folding
+        autocmd!
+        autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+    augroup END
+
+    augroup coffee_script_indent
+        autocmd!
+        autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab softtabstop=2
+    augroup END
+
+    augroup coffee_script_auto_compile
+        autocmd!
+        autocmd BufNewFile,BufReadPost *.coffee compiler cake
+        autocmd BufWritePost *.coffee silent make! build
+    augroup END
 
 " }}}
 " Advanced Functions {{{

@@ -1,3 +1,4 @@
+" Eclipse Luna
 
 set tabstop=4
 set shiftwidth=4
@@ -16,7 +17,30 @@ nnoremap <Space> :nohlsearch<return>
 
 inoremap jk <esc>
 
+" nnoremap jk <esc>
+
 nnoremap <tab> %
 
 nnoremap \q :q<return>
+vnoremap \q :q<return>
 nnoremap \w :w<return>
+
+" eclipseaction findReferenceInWorkspace org.eclipse.jdt.ui.edit.text.java.search.reference.in.workspace
+" nnoremap \r :findReferenceInWorkspace<return>
+
+eclipseuiaction openCallHierarchy org.eclipse.jdt.ui.edit.text.java.org.eclipse.jdt.ui.edit.text.java.open.call.hierarchy
+nnoremap \h :openCallHierarchy<return>
+
+" Same?
+eclipseuiaction showOutline org.eclipse.jdt.ui.edit.text.java.show.outline
+nnoremap \o :showOutline<return>
+eclipseuiaction openStructure org.eclipse.jdt.ui.navigate.java.open.structure
+nnoremap \s :openStructure<return>
+
+" only functions
+eclipseuiaction openImplementation org.eclipse.jdt.ui.edit.text.java.open.implementation
+nnoremap \i :openImplementation<return>
+
+eclipseuiaction showInformation org.eclipse.ui.edit.text.showInformation
+nnoremap \I :showInformation<return>
+
