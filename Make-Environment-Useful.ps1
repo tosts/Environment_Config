@@ -32,6 +32,26 @@ if (-Not ($env:PATH -Split ';' | `
         [EnvironmentVariableTarget]::User)
 }
 
+if (-Not $env:HOME) {
+    Write-Verbose 'Ensuring existence of $env:HOME'
+    [Environment]::SetEnvironmentVariable("Home",         `
+        "$env:USERPROFILE",                               `
+        [EnvironmentVariableTarget]::User)
+}
+if (-Not $env:TEMP) {
+    Write-Verbose 'Ensuring existence of $env:TEMP'
+    [Environment]::SetEnvironmentVariable("Home",         `
+        "$env:USERPROFILE\AppData\Local\Temp",            `
+        [EnvironmentVariableTarget]::User)
+}
+if (-Not $env:TMP) {
+    Write-Verbose 'Ensuring existence of $env:TMP'
+    [Environment]::SetEnvironmentVariable("Home",         `
+        "$env:USERPROFILE\AppData\Local\Temp",            `
+        [EnvironmentVariableTarget]::User)
+}
+
+
 # Elevate & Restart
 #
 # Source: http://blogs.msdn.com/b/virtual_pc_guy/archive/2010/09/23/a-self-elevating-powershell-script.aspx
