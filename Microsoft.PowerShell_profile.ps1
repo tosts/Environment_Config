@@ -30,6 +30,8 @@ Set-Alias node node.exe
 Set-Alias gti git
 Set-Alias jshint jshint.cmd
 Set-Alias jsxhint jshint.cmd
+Set-Alias coffee coffee.cmd
+Set-Alias cake cake.cmd
 
 
 $OrigBgColor = $host.ui.rawui.BackgroundColor
