@@ -95,9 +95,6 @@
         set cursorline
         nnoremap <F2> :set invnumber \| set invrelativenumber<return>
 
-        "colorscheme wombat256mod
-        set background=dark
-
     " }}}
     " Editing/Behavior {{{
 
