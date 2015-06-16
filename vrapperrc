@@ -44,3 +44,8 @@ nnoremap \i :openImplementation<return>
 eclipseuiaction showInformation org.eclipse.ui.edit.text.showInformation
 nnoremap \I :showInformation<return>
 
+" make builder
+nnoremap \mb yiwea <esc>pbvuA = builder( <esc>pa.class );<esc>
+
+" make private final
+nnoremap \mpf yiwea <esc>pbvuIprivate final <esc>A;<esc>

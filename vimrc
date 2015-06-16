@@ -19,6 +19,7 @@
         Plugin 'tpope/vim-surround'
         Plugin 'tpope/vim-repeat'
         Plugin 'tpope/vim-fugitive'
+        Plugin 'Justinmk/vim-sneak'
 
         Plugin 'AndrewRadev/linediff.vim'
         Plugin 'vim-scripts/ingo-library'
