@@ -180,6 +180,8 @@
         " missing privilege override
         cmap w!! w !sudo tee > /dev/null %
 
+        nmap <silent> <leader>sl :set invlist<return>
+
     " }}}
     " Perl {{{
 
@@ -290,6 +292,11 @@
         command! -complete=file -nargs=0 Node execute s:ExecuteIntoWindow('node', 'node '.<q-args>)
         cabbrev node Node
         map <F10> :Node %<return>
+
+    " }}}
+    " coffeescript {{{
+
+        nnoremap <leader>ui outil = require 'util'<cr>console.log util.inspect , depth: 0<esc>2Bi
 
     " }}}
     " Perl {{{
