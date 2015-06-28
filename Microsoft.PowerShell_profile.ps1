@@ -26,7 +26,6 @@ Set-Alias mvn mvn.bat
 Set-Alias android android.bat
 Set-Alias ll Get-ChildItem
 Set-Alias js node.exe
-Set-Alias node node.exe
 Set-Alias gti git
 Set-Alias jshint jshint.cmd
 Set-Alias jsxhint jshint.cmd
@@ -48,6 +47,10 @@ Function npm {
     npm.cmd $args
     Reset-Colors
 }
+Function node {
+    node.exe $args
+    Reset-Colors
+}
 Function g {
     grunt $args
     Reset-Colors
@@ -55,6 +58,9 @@ Function g {
 Function c {
     cake.cmd $args
     Reset-Colors
+}
+Function cs {
+    cd C:\Users\Tris\C2Development\TMXServer\
 }
 
 function Expand-ZipFile
