@@ -9,17 +9,18 @@
         Plugin 'gmarik/Vundle.vim'
 
         Plugin 'kien/ctrlp.vim'
+        Plugin 'justinmk/vim-sneak'
 
         Plugin 'scrooloose/nerdtree'
         Plugin 'scrooloose/nerdcommenter'
         Plugin 'scrooloose/syntastic'
         Plugin 'PProvost/vim-ps1'
         Plugin 'kchmck/vim-coffee-script'
+        Plugin 'jvirtanem/vim-octave'
 
         Plugin 'tpope/vim-surround'
         Plugin 'tpope/vim-repeat'
         Plugin 'tpope/vim-fugitive'
-        Plugin 'Justinmk/vim-sneak'
 
         Plugin 'AndrewRadev/linediff.vim'
         Plugin 'vim-scripts/ingo-library'
@@ -70,9 +71,9 @@
     " }}}
     " Whitespace {{{
 
-        set tabstop=4
-        set shiftwidth=4
-        set softtabstop=4
+        set tabstop=2
+        set shiftwidth=2
+        set softtabstop=2
         set expandtab
 
     " }}}
@@ -146,15 +147,17 @@
         nnoremap <C-L> gt
 
         nnoremap <silent> <leader>ev :tabnew $MYVIMRC<return>
-        nnoremap <leader>sv :source $MYVIMRC<return> :echo 'resourced .vimrc'<return>
+        nnoremap <silent> <leader>eg :tabnew $MYGVIMRC<return>
         if has('win32')
             nnoremap <silent> <leader>ep :tabnew $HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1<return>
         endif
+        nnoremap <leader>sv :source $MYVIMRC<return> :echo 'resourced vimrc'<return>
+        nnoremap <leader>sg :source $MYGVIMRC<return> :echo 'resourced gvimrc'<return>
 
         inoremap jk <esc>
-        nnoremap <silent> <leader>q :q!<return>
         nnoremap <leader>w :w<return>:echo 'saved'<return>
         nnoremap <leader>e :Ex<return>
+        nnoremap <leader>q :q!<return>
         "nnoremap <leader>n :tabnew<return> -> plugins
         "nnoremap <silent> <leader>r :redraw!<return>
 
@@ -320,5 +323,15 @@
 
 " }}}
 
-set background=dark
-colorscheme default
+if has('win32')
+    "set shell=cmd.exe
+    set shell=powershell
+    set shellcmdflag=-Command
+    " let $TMP="C:/tmp"
+    " setlocal equalprg=tidy\ --output-xhtml\ y\ -utf8\ --wrap-attributes\ 1\ --vertical-space\ 1\ --indent\ auto\ --wrap\ 0\ --show-body-only\ auto\ --preserve-entities\ 1\ -q\ -f\ "shellpipe=2>"
+    " doesn't help
+    nnoremap <silent> <leader>ep :tabnew $HOME\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1<return>
+    set nocursorline
+    let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+endif
+
