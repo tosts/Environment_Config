@@ -95,7 +95,7 @@
         set relativenumber
         set ruler
         set cursorline
-        nnoremap <F2> :set invnumber \| set invrelativenumber<return>
+        nnoremap <silent> <F2> :set invnumber \| set invrelativenumber<return>
 
     " }}}
     " Editing/Behavior {{{
@@ -334,4 +334,3 @@ if has('win32')
     set nocursorline
     let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 endif
-
