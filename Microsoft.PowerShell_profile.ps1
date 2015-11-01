@@ -9,6 +9,7 @@ Set-PSReadlineKeyHandler -Key Ctrl+D -Function DeleteChar
 Set-PSReadlineKeyHandler -Key Ctrl+A -Function BeginningOfLine
 Set-PSReadlineKeyHandler -Key Ctrl+E -Function EndOfLine
 Set-PSReadlineKeyHandler -Key Ctrl+K -Function ForwardDeleteLine
+Set-PSReadlineKeyHandler -Key Ctrl+W -Function BackwardKillWord
 
 Set-PSReadlineKeyHandler -Key Alt+F -Function ForwardWord
 Set-PSReadlineKeyHandler -Key Alt+B -Function BackwardWord
