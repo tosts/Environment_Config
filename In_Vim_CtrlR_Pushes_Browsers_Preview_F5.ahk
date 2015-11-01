@@ -6,3 +6,4 @@
   Send, {F5}
   WinActivate ahk_class Vim
 Return
+#IfWinActive
