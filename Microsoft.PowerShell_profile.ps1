@@ -63,6 +63,9 @@ Function c {
 Function cs {
     cd C:\Users\Tris\C2Development\TMXServer\
 }
+Function cdh {
+  cd $HOME
+}
 
 function Expand-ZipFile
 {

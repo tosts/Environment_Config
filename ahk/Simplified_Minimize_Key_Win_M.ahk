@@ -1,4 +1,4 @@
 #SingleInstance force
 
-#n::WinMinimize, A
+#m::WinMinimize, A
 Return
