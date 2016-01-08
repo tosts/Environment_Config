@@ -16,7 +16,7 @@
         Plugin 'scrooloose/syntastic'
         Plugin 'PProvost/vim-ps1'
         Plugin 'kchmck/vim-coffee-script'
-        Plugin 'jvirtanem/vim-octave'
+        Plugin 'jvirtanen/vim-octave'
         Plugin 'digitaltoad/vim-jade'
 
         Plugin 'tpope/vim-surround'
