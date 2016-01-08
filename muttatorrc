@@ -1,0 +1,19 @@
+"1.3.1 (created: 2015/11/22 20:56:18)
+
+source! /home/griswold/.muttatorrc.local
+
+inoremap jk <esc>
+" interfering with scrolling in message:
+" mnoremap jk <esc>
+vnoremap jk <esc>
+cnoremap jk <esc>
+
+noremap <C-h> gT
+noremap <C-l> gt
+
+mnoremap j 8j
+mnoremap k 8k
+mnoremap h 2j
+mnoremap l 2k
+
+" vim: set ft=muttator:

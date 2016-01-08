@@ -17,10 +17,12 @@
         Plugin 'PProvost/vim-ps1'
         Plugin 'kchmck/vim-coffee-script'
         Plugin 'jvirtanem/vim-octave'
+        Plugin 'digitaltoad/vim-jade'
 
         Plugin 'tpope/vim-surround'
         Plugin 'tpope/vim-repeat'
         Plugin 'tpope/vim-fugitive'
+        " TODO: search for argtextobj
 
         Plugin 'AndrewRadev/linediff.vim'
         Plugin 'vim-scripts/ingo-library'
