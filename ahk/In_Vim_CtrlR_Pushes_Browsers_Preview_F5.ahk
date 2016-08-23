@@ -1,4 +1,5 @@
 #SingleInstance force
+SetTitleMatchMode 2
 
 #IfWinActive ahk_class Vim
 ^r::

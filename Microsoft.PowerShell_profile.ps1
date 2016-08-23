@@ -21,6 +21,7 @@ Remove-Item alias:\ps
 Set-Alias ps Invoke-PSake
 Set-Alias make gmake.exe
 Set-Alias groovy groovy.bat
+Set-Alias groovysh groovysh.bat
 Set-Alias gsh groovysh.bat
 Set-Alias which Get-Command
 Set-Alias mvn mvn.bat
@@ -39,10 +40,6 @@ $OrigFgColor = $host.ui.rawui.ForegroundColor
 function Reset-Colors {
     $host.ui.rawui.BackgroundColor = $OrigBgColor
     $host.ui.rawui.ForegroundColor = $OrigFgColor
-}
-Function mocha {
-    mocha.cmd $args
-    Reset-Colors
 }
 Function npm {
     npm.cmd $args
