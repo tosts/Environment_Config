@@ -8,6 +8,7 @@
     call vundle#begin()
         Plugin 'gmarik/Vundle.vim'
 
+        "also from vim-scripts?
         Plugin 'kien/ctrlp.vim'
         Plugin 'justinmk/vim-sneak'
 
@@ -25,20 +26,20 @@
         " TODO: search for argtextobj
 
         Plugin 'AndrewRadev/linediff.vim'
-        Plugin 'vim-scripts/ingo-library'
-        Plugin 'vim-scripts/AdvancedDiffOptions'
+        Plugin 'ingo-library'
+        Plugin 'AdvancedDiffOptions'
         Plugin 'godlygeek/tabular'
 
 
         " Plugin 'spf13/vim-autoclose'
 
-        Plugin 'vim-scripts/YankRing.vim'
+        "Plugin 'YankRing.vim'
         "Plugin 'mileszs/ack.vim'
         Plugin 'rking/ag.vim'
 
         Plugin 'mattn/emmet-vim'
         " Fun
-        Plugin 'vim-scripts/loremipsum'
+        Plugin 'loremipsum'
         " Plugin 'bling/vim-airline'
 
         " colorschemes
@@ -46,10 +47,11 @@
         Plugin 'tpope/vim-vividchalk'
         Plugin 'nanotech/jellybeans.vim'
         Plugin 'Lokaltog/vim-distinguished'
-        Plugin 'garybernhardt/dotfiles', {'rtp': '.vim'}
+        "Plugin 'garybernhardt/dotfiles', {'rtp': '.vim'}
         Plugin 'mindriot101/srw-colorscheme.vim'
         " not working either
-        Plugin 'vim-scripts/wombat256.vim'
+        Plugin 'wombat256.vim'
+        "Plugin 'eclm_wombat.vim'
         Plugin 'gmarik/ingretu'
         Plugin 'desert-warm-256'
 
@@ -73,9 +75,9 @@
     " }}}
     " Whitespace {{{
 
-        set tabstop=2
-        set shiftwidth=2
-        set softtabstop=2
+        set tabstop=4
+        set shiftwidth=4
+        set softtabstop=4
         set expandtab
 
     " }}}
@@ -111,7 +113,7 @@
         set directory=~/.vim/vimswp
         set autoread
 
-        set enc=utf-8
+        " set enc=utf-8
 
         " emacs navigation in command mode {{{
 
@@ -179,6 +181,8 @@
         set pastetoggle=<F3>
         " purge trailing whitespace
         map <leader>dw :%s/\s\+$//g<cr>
+        " tabs to spaces
+        map <leader>ts :%s/	/    /g<cr>
 
         nnoremap <silent> * :let @/='\<<C-R>=expand("<cword>")<cr>\>'<cr>:set hlsearch<cr>
 
@@ -336,3 +340,5 @@ if has('win32')
     set nocursorline
     let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 endif
+
+set background=dark

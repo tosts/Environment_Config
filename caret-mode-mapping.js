@@ -26,3 +26,6 @@ function exoticModeMap (lhs, rhs, optionalModes) {
 
 exoticModeMap('jk', '<Esc>') // not working for hint mode.... yet
 exoticModeMap('jk', '<Esc>', [modes.INSERT, modes.TEXTAREA])
+
+exoticModeMap('C_h', 'gT', [modes.INSERT, modes.TEXTAREA])
+exoticModeMap('C_l', 'gt', [modes.INSERT, modes.TEXTAREA])

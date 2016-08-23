@@ -1,4 +1,5 @@
 set toolbars+=nonavigation
+" set noinsertmode
 
 inoremap jk <esc>
 vnoremap jk <esc>
@@ -9,7 +10,11 @@ noremap <C-l> gt
 
 nnoremap j 8j
 nnoremap k 8k
-nnoremap h 2j
-nnoremap l 2k
+nnoremap h 8h
+nnoremap l 8l
 
-" see also ~/[.]?vimperator/plugin/caret-mode-mapping.js
+nnoremap x <C-c>
+
+" see also ~/.vimperator/plugin/caret-mode-mapping.js
+
+nnoremap \b :dialog bookmarks<cr>

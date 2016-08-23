@@ -20,6 +20,8 @@ fi
 
 for file in *rc bash_aliases; do
     if [ ! -f ~/\.$file ]; then
-        ln -s Environment_Config/$file ../\.$file
+        ln -s ~/Environment_Config/$file ../\.$file
     fi
 done
+
+ln -s ~/Environment_Config/vimrc ~/.config/nvim/init.vim
