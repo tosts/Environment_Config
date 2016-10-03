@@ -1,11 +1,5 @@
 $VerbosePreference = "Continue"
 
-$expected_mingw_path = "C:\MinGW64"
-$install_mingw = -Not (Test-Path "$expected_mingw_path\bin\g++.exe")
-
-$expected_node_path = "C:\Program Files\nodejs"
-$install_node = -Not (Test-Path "$expected_node_path\node.exe")
-
 # For user _and_ admin
 
 if (-Not (Get-Module PSReadLine)) {
@@ -69,6 +63,31 @@ if ($myWindowsPrincipal.IsInRole($adminRole)) {
    exit
 }
 
+#
+# Helpers
+#
+
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+function Unzip
+{
+    param([string]$zipfile, [string]$outpath)
+
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
+}
+
+#
+# Software install stuff (probably happening in the admin context first)
+#
+
+$expected_mingw_path = "C:\MinGW64"
+$install_mingw = -Not (Test-Path "$expected_mingw_path\bin\g++.exe")
+
+$expected_node_path = "C:\Program Files\nodejs"
+$install_node = -Not (Test-Path "$expected_node_path\node.exe")
+
+$expected_gradle_path = "C:\Gradle"
+$install_gradle = -Not (Test-Path "$expected_gradle_path\*\bin\gradle.bat")
+
 if ($install_mingw) {
     Write-Verbose "Fetching for installation: mingw installer"
     Write-Verbose "Hint: Expected path '$expected_mingw_path'"
@@ -99,6 +118,24 @@ if ($install_node) {
             Write-Verbose "Adding to system PATH: '$expected_node_path'"
             [Environment]::SetEnvironmentVariable("Path", `
                 "$env:Path;$expected_node_path",          `
+                [EnvironmentVariableTarget]::Machine)
+        }
+    Write-Verbose "Finished"
+}
+
+if ($install_gradle) {
+    Write-Verbose "Fetching for installation: gradle zip"
+        $gradle_download = 'https://gradle.org/gradle-download/'
+        $zip_url = ((Invoke-WebRequest $gradle_download).content | Select-String -Pattern 'https://.*?bin.zip').Matches.Value
+        Invoke-Webrequest $zip_url -OutFile gradle.zip
+        Unzip ".\gradle.zip" "C:\Gradle"
+        Remove-Item 'gradle.zip'
+
+        if (Test-Path "$expected_gradle_path\*\bin\gradle.bat") {
+            Write-Verbose "Adding to system PATH: '$expected_gradle_path'"
+            $subfolder = Get-ChildItem $expected_gradle_path
+            [Environment]::SetEnvironmentVariable("Path",              `
+                "$env:Path;$expected_gradle_path\$subfolder.name\bin", `
                 [EnvironmentVariableTarget]::Machine)
         }
     Write-Verbose "Finished"

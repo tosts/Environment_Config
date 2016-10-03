@@ -23,6 +23,7 @@ Set-Alias make gmake.exe
 Set-Alias groovy groovy.bat
 Set-Alias groovysh groovysh.bat
 Set-Alias gsh groovysh.bat
+Set-Alias gradle gradle.bat
 Set-Alias which Get-Command
 Set-Alias mvn mvn.bat
 Set-Alias android android.bat
@@ -59,6 +60,9 @@ Function c {
 }
 Function cs {
     cd C:\Users\Tris\C2Development\TMXServer\
+}
+Function ck {
+    cd C:\Users\Tris\Work\KnowledgeBase\
 }
 Function cdh {
   cd $HOME
