@@ -30,6 +30,7 @@ Set-Alias android android.bat
 Set-Alias ll Get-ChildItem
 Set-Alias js node.exe
 Set-Alias gti git
+Set-Alias g git
 Set-Alias jshint jshint.cmd
 Set-Alias jsxhint jshint.cmd
 Set-Alias coffee coffee.cmd
@@ -50,7 +51,7 @@ Function node {
     node.exe $args
     Reset-Colors
 }
-Function g {
+Function gr {
     grunt $args
     Reset-Colors
 }
