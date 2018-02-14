@@ -91,7 +91,7 @@ $install_gradle = -Not (Test-Path "$expected_gradle_path\*\bin\gradle.bat")
 if ($install_mingw) {
     Write-Verbose "Fetching for installation: mingw installer"
     Write-Verbose "Hint: Expected path '$expected_mingw_path'"
-        Invoke-Webrequest 'http://win-builds.org/1.5-rc3/win-builds-1.5-rc3.exe' -OutFile mingw_installer.exe
+        Invoke-Webrequest 'http://win-builds.org/1.5.0/win-builds-1.5.0.exe' -OutFile mingw_installer.exe
         Start-Process 'mingw_installer.exe' -Wait
         Remove-Item 'mingw_installer.exe'
 
