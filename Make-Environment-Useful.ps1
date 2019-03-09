@@ -88,13 +88,13 @@ function Unzip
 #
 
 $expected_mingw_path = "C:\MinGW64"
-$install_mingw = -Not (Test-Path "$expected_mingw_path\bin\g++.exe")
+$install_mingw = $false #-Not (Test-Path "$expected_mingw_path\bin\g++.exe")
 
 $expected_node_path = "C:\Program Files\nodejs"
-$install_node = -Not (Test-Path "$expected_node_path\node.exe")
+$install_node = $false #-Not (Test-Path "$expected_node_path\node.exe")
 
 $expected_gradle_path = "C:\Gradle"
-$install_gradle = -Not (Test-Path "$expected_gradle_path\*\bin\gradle.bat")
+$install_gradle = $false #-Not (Test-Path "$expected_gradle_path\*\bin\gradle.bat")
 
 if ($install_mingw) {
     Write-Verbose "Fetching for installation: mingw installer"
