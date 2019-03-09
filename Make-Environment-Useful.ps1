@@ -16,6 +16,7 @@ if (-Not (Get-Module PSake)) {
 if (Test-Path "$PSScriptRoot\Microsoft.PowerShell_profile.ps1") {
     Write-Verbose "Updating PowerShell profile."
     Copy-Item "$PSScriptRoot\Microsoft.PowerShell_profile.ps1" "$env:USERPROFILE\Documents\WindowsPowerShell"
+    Unblock-File "$env:USERPROFILE\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 }
 
 if (-Not ($env:PATH -Split ';' | `
@@ -25,23 +26,30 @@ if (-Not ($env:PATH -Split ';' | `
         "$env:Path;$env:USERPROFILE\AppData\Roaming\npm", `
         [EnvironmentVariableTarget]::User)
 }
+if (-Not ($env:PATH -Split ';' | `
+        Select-String ([Regex]::Escape("$env:USERPROFILE\AppData\Local\Programs\Git\bin"))
+   ) -And (Test-Path "$env:USERPROFILE\AppData\Local\Programs\Git\bin")) {
+    [Environment]::SetEnvironmentVariable("Path",         `
+        "$env:Path;$env:USERPROFILE\AppData\Local\Programs\Git\bin", `
+        [EnvironmentVariableTarget]::User)
+}
 
 if (-Not $env:HOME) {
     Write-Verbose 'Ensuring existence of $env:HOME'
-    [Environment]::SetEnvironmentVariable("Home",         `
-        "$env:USERPROFILE",                               `
+    [Environment]::SetEnvironmentVariable("HOME",`
+        "$env:USERPROFILE",                      `
         [EnvironmentVariableTarget]::User)
 }
 if (-Not $env:TEMP) {
     Write-Verbose 'Ensuring existence of $env:TEMP'
-    [Environment]::SetEnvironmentVariable("Home",         `
-        "$env:USERPROFILE\AppData\Local\Temp",            `
+    [Environment]::SetEnvironmentVariable("TEMP",`
+        "$env:USERPROFILE\AppData\Local\Temp",   `
         [EnvironmentVariableTarget]::User)
 }
 if (-Not $env:TMP) {
     Write-Verbose 'Ensuring existence of $env:TMP'
-    [Environment]::SetEnvironmentVariable("Home",         `
-        "$env:USERPROFILE\AppData\Local\Temp",            `
+    [Environment]::SetEnvironmentVariable("TMP",`
+        "$env:USERPROFILE\AppData\Local\Temp",  `
         [EnvironmentVariableTarget]::User)
 }
 

@@ -35,6 +35,8 @@ Set-Alias jshint jshint.cmd
 Set-Alias jsxhint jshint.cmd
 Set-Alias coffee coffee.cmd
 Set-Alias cake cake.cmd
+Set-Alias http-server http-server.cmd
+Set-Alias touch Touch-File
 
 
 $OrigBgColor = $host.ui.rawui.BackgroundColor
@@ -49,6 +51,10 @@ Function npm {
 }
 Function node {
     node.exe $args
+    Reset-Colors
+}
+Function sh {
+    C:\Users\Tris\AppData\Local\Programs\Git\bin\sh.exe --login -i $args
     Reset-Colors
 }
 Function gr {
@@ -68,6 +74,15 @@ Function ck {
 Function cdh {
   cd $HOME
 }
+Function .. {
+    cd ..
+}
+Function ... {
+    cd ../..
+}
+Function .... {
+    cd ../../..
+}
 
 function Expand-ZipFile
 {
@@ -77,5 +92,21 @@ function Expand-ZipFile
     foreach($item in $zip.items())
     {
         $shell.Namespace($Destination).copyhere($item)
+    }
+}
+Function Touch-File
+{
+    $file = $args[0]
+    if($file -eq $null) {
+        throw "No filename supplied"
+    }
+
+    if(Test-Path $file)
+    {
+        (Get-ChildItem $file).LastWriteTime = Get-Date
+    }
+    else
+    {
+        echo $null > $file
     }
 }
